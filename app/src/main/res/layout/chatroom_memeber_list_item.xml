@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+
+        <RelativeLayout
+            android:id="@+id/rel_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/rel_option"
+            >
+
+
+            <RelativeLayout
+                android:id="@+id/relMy2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                >
+                <com.makeramen.roundedimageview.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/iv_user"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:src="@mipmap/user96"
+                    app:riv_border_color="@color/white"
+                    app:riv_border_width="1dip"
+                    app:riv_corner_radius="35dip"
+                    app:riv_mutate_background="true" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/relMy2"
+                android:layout_toLeftOf="@+id/iv_remove"
+                android:layout_marginLeft="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="Sourav Roy"
+                    />
+                <TextView
+                    android:id="@+id/tv_is_admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/green"
+                    android:background="@drawable/green_border"
+                    android:layout_marginTop="5dp"
+                    android:padding="4dp"
+                    android:typeface="sans"
+                    android:textSize="12sp"
+                    android:text="Admin"
+                    />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rel_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            >
+
+            <ImageView
+                android:id="@+id/iv_popup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_more_vert_black_36dp"
+                />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

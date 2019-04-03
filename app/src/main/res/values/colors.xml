@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d27a5c</color>
+    <color name="colorPrimaryDark">#ce5105</color>
+    <color name="colorAccent">#d75525</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="blackopac">#60000000</color>
+    <color name="textcolor">#df6c26</color>
+    <color name="paginlightColor">#f5d3bd</color>
+    <color name="darkgray">#5d5d5d</color>
+    <color name="fbcolor">#415dae</color>
+    <color name="lightgraycolor">#e3e3e3</color>
+    <color name="mediumgray">#b3b3b3</color>
+    <color name="trans">#00000000</color>
+    <color name="list_divider">#7c7f96</color>
+    <color name="linecolor">#a0a0a0</color>
+    <color name="textdarkgray">#666666</color>
+    <color name="LDialogs_transparent">#00000000</color>
+    <color name="LDialogs_dim_lighter_gray">#80E0E0E0</color>
+    <color name="favoriteposts">#bbbbbc</color>
+    <color name="invitecolor">#fbb03b</color>
+    <color name="golivecolor">#009245</color>
+    <color name="blue">#031bcd</color>
+    <color name="insta_color">#e95950</color>
+    <color name="purple">#A83AC3</color>
+    <color name="pink">#CA3F6F</color>
+    <color name="light_grey">#EBEDEF</color>
+    <color name="divider_color">#C5BDAC</color>
+    <color name="tint_color">#989696</color>
+    <color name="bg_chat">#EBEDEF</color>
+    <color name="off_white">#F4F4F4</color>
+    <color name="green">#02E20D</color>
+
+    <color name="video_trim_slider_unselected">#3F51B5</color>
+    <color name="video_trim_slider_selected">#FF4081</color>
+
+
+
+    <item name="blue1" type="color">#009ad2</item>
+    <item name="purple1" type="color">#9025c6</item>
+    <item name="green1" type="color">#89b110</item>
+    <item name="orange" type="color">#ce8900</item>
+    <item name="red" type="color">#c70000</item>
+    <item name="darkblue" type="color">#448fa7</item>
+    <item name="darkpurple" type="color">#67208b</item>
+    <item name="darkgreen" type="color">#5e7e1d</item>
+    <item name="darkorange" type="color">#935208</item>
+    <item name="darkred" type="color">#FFCC0000</item>
+
+
+    <integer-array name="androidcolors">
+        <item>@color/blue1</item>
+        <item>@color/purple1</item>
+        <item>@color/green1</item>
+        <item>@color/orange</item>
+        <item>@color/red</item>
+        <item>@color/darkblue</item>
+        <item>@color/darkpurple</item>
+        <item>@color/darkgreen</item>
+        <item>@color/darkorange</item>
+        <item>@color/darkred</item>
+    </integer-array>
+
+
+</resources>

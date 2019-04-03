@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1029071024431",
+    "firebase_url": "https://hbhg-67186.firebaseio.com",
+    "project_id": "hbhg-67186",
+    "storage_bucket": "hbhg-67186.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029071024431:android:9b702b98b536ed68",
+        "android_client_info": {
+          "package_name": "com.hbhgdating"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1029071024431-43qv880f6d5pnbrlli73fluosi3ibsv7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hbhgdating",
+            "certificate_hash": "bb4df229e99a1ca143a6ca55d8076155cfc9dd8d"
+          }
+        },
+        {
+          "client_id": "1029071024431-icmv9vjcufmmpfhvn8q4v663p8obs41m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXGzOm6WJivo-r19EmufMVmJ7v-EXdqfM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1029071024431-icmv9vjcufmmpfhvn8q4v663p8obs41m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

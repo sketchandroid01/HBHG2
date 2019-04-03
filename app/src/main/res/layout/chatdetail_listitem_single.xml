@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/relMy1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="3dp" >
+
+        <LinearLayout
+            android:id="@+id/linMsg1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp"
+            android:background="@drawable/chatbubble_flip"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/_60sdp"
+            >
+
+            <TextView
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textColor="@color/black"
+                android:textColorLink="@color/blue"
+                android:textSize="16sp" />
+
+            <TextView
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
+                android:id="@+id/textView1Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="start"
+                android:textColor="@color/darkgray"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:id="@+id/relimgView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:padding="@dimen/_6sdp"
+            android:background="@drawable/chatbubble_flip"
+            >
+
+            <RelativeLayout
+                android:id="@+id/rl_iv_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="3dp"
+                >
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageView11"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/men_intv"
+                android:background="@color/white"
+                app:riv_corner_radius="4dip" />
+
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:visibility="gone"
+                android:id="@+id/donut_progress_iv22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                custom:donut_progress="0"/>
+
+        </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:id="@+id/textView1ImgDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_iv_11"
+                android:paddingRight="6dp"
+                android:paddingEnd="6dp"
+                android:textColor="@color/darkgray"
+                android:textSize="11sp" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_alignParentRight="true"
+            android:id="@+id/relgifView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:background="@drawable/chatbubble_flip"
+            android:padding="7dp"
+            >
+
+            <ImageView
+                android:minWidth="@dimen/_250sdp"
+                android:minHeight="@dimen/_150sdp"
+                android:scaleType="fitXY"
+                android:id="@+id/img_giphy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="7dp"
+                />
+
+            <TextView
+                android:id="@+id/textView1GifDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_giphy"
+                android:paddingTop="5dp"
+                android:paddingRight="5dp"
+                android:paddingEnd="5dp"
+                android:textColor="@color/black_translucent"
+                android:textSize="11sp" />
+
+            </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/relMy2"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="3dp"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:id="@+id/linMsg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp"
+            android:background="@drawable/chatbubble"
+            android:orientation="vertical"
+            android:layout_marginRight="@dimen/_60sdp"
+
+            >
+
+            <TextView
+                android:autoLink="web"
+                android:linksClickable="true"
+                android:paddingRight="5dp"
+                android:paddingLeft="10dp"
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:textColor="@color/black"
+                android:textColorLink="@color/blue"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/textView2Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:gravity="start"
+                android:textColor="@color/darkgray"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+                android:id="@+id/relimgView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:paddingTop="@dimen/_6sdp"
+                android:paddingLeft="@dimen/_9sdp"
+                android:paddingBottom="@dimen/_6sdp"
+                android:paddingRight="@dimen/_6sdp"
+                android:background="@drawable/chatbubble"
+                >
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imageView22"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/men_intv"
+                    android:background="@color/white"
+                    app:riv_corner_radius="4dip"  />
+
+
+                <ImageView
+                    android:id="@+id/imageView25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/textView2ImgDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView22"
+                    android:paddingTop="3dp"
+                    android:paddingRight="6dp"
+                    android:paddingEnd="6dp"
+                    android:textColor="@color/darkgray"
+                    android:textSize="11sp" />
+
+
+            </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/relgifView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/chatbubble"
+                android:padding="7dp"
+                >
+
+
+                <ImageView
+                    android:minWidth="@dimen/_250sdp"
+                    android:minHeight="@dimen/_150sdp"
+                    android:scaleType="fitXY"
+                    android:id="@+id/img_giphy2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="7dp"
+                    />
+
+                <TextView
+                    android:id="@+id/textView2GifDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_giphy2"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/black_translucent"
+                    android:textSize="11sp" />
+
+            </RelativeLayout>
+
+
+
+</RelativeLayout>
+
+    </RelativeLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/line"
+    android:baselineAligned="false"
+    android:gravity="center_vertical" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/relProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/imgView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/profile_48" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relChat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/imgView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/chat_48" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/imgView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/glasses" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relFav"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/imgView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/fav_48" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relNotification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/imgView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/notify_48" />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

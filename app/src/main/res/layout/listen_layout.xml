@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/listen_rl"
+        android:layout_below="@+id/rl4_loves"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:id="@+id/relMusic1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="2.5dp"
+                android:layout_weight="1"
+                android:background="@drawable/sqaure_border"
+                android:padding="1dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imgMusic"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/grid_bg_4"
+                        />
+
+
+                    <ImageView
+                        android:id="@+id/imgMusic1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+
+                        />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtMusic1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/imgMusic1"
+                    android:background="@color/lightgraycolor"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:layout_weight="4"
+                    android:textColor="@color/textcolor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relMusic2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="@drawable/sqaure_border"
+                android:padding="1dp" >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imgMusic233"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:src="@mipmap/glass_tint"
+                    />
+
+
+                <ImageView
+                    android:id="@+id/imgMusic2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/grid_bg_4"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtMusic2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/imgMusic2"
+                    android:background="@color/lightgraycolor"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:layout_weight="4"
+                    android:text=""
+                    android:textColor="@color/textcolor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relMusic3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="@drawable/sqaure_border"
+                android:padding="1dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imgMusic20"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:src="@mipmap/glass_tint"
+                    />
+
+                <ImageView
+                    android:id="@+id/imgMusic3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/grid_bg_4"
+                   />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/txtMusic3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/imgMusic3"
+                    android:background="@color/lightgraycolor"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:layout_weight="4"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/textcolor" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/cover_width"
+    android:layout_height="@dimen/cover_height"
+    android:background="@drawable/cover_selector"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:padding="1dp" >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/coverimage_height"
+        android:contentDescription="@string/app_name"
+        android:scaleType="center"
+        android:src="@mipmap/men_intv" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textAppearance="?android:attr/textAppearanceSmallInverse"
+        android:textColor="@color/textcolor"
+        android:textSize="14sp" />
+
+</LinearLayout>

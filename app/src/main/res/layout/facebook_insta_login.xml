@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg"
+    >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        >
+        <RelativeLayout
+            android:id="@+id/rel_fb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/txt_tick"
+            android:background="@drawable/round_fill"
+            android:gravity="center"
+
+            >
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/img_view_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/fb_whi_96"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name" />
+
+
+            <TextView
+                android:layout_toRightOf="@+id/img_view_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/com_facebook_loginview_log_in_button"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/_16sdp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+
+                />
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/rel_insta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rel_fb"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/round_fill_pink"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+
+            >
+            <ImageView
+                android:id="@+id/img_view_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/insta_whi_96"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name" />
+
+            <TextView
+                android:layout_toRightOf="@+id/img_view_2"
+                android:id="@+id/login_insta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textColor="@color/white"
+                android:text="Connect with Instagram"
+                android:textSize="@dimen/_16sdp"
+
+                android:layout_centerVertical="true"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="6dp"
+                />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:clickable="false">
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:padding="20dp"
+            >
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="@android:style/Widget.ProgressBar.Large.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:clickable="false"
+                android:indeterminateDrawable="@drawable/progress"
+                />
+
+            <ImageView
+                android:id="@+id/textView1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/sunglass"
+                android:clickable="false"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:layout_below="@+id/progressBar1"
+                android:text="@string/creating_your_video"
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

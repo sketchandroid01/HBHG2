@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl4_loves"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_4sdp"
+
+        android:layout_below="@+id/rl4_eats">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:id="@+id/relInterest1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginRight="2.5dp"
+
+                android:background="@drawable/sqaure_border"
+                android:padding="1dp" >
+
+                <ImageView
+                    android:id="@+id/imgInterest1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:layout_weight="1"
+                    android:src="@mipmap/movie" />
+
+                <TextView
+                    android:id="@+id/txtInterest1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/imgInterest1"
+                    android:background="@color/lightgraycolor"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:layout_weight="5"
+                    android:textColor="@color/textcolor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relInterest2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+
+                android:background="@drawable/sqaure_border"
+                android:padding="1dp" >
+
+                <ImageView
+                    android:id="@+id/imgInterest2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:layout_weight="1"
+                    android:src="@mipmap/movie" />
+
+                <TextView
+                    android:id="@+id/txtInterest2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/imgInterest2"
+                    android:background="@color/lightgraycolor"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:layout_weight="5"
+                    android:textColor="@color/textcolor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/relInterest3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_marginLeft="2.5dp"
+                android:layout_marginRight="2.5dp"
+                android:background="@drawable/sqaure_border"
+                android:padding="1dp" >
+
+                <ImageView
+                    android:id="@+id/imgInterest3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:layout_weight="1"
+                    android:src="@mipmap/movie" />
+
+                <TextView
+                    android:id="@+id/txtInterest3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/imgInterest3"
+                    android:background="@color/lightgraycolor"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:layout_weight="5"
+                    android:text=""
+                    android:textColor="@color/textcolor" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

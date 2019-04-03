@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:ignore="RtlSymmetry" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/textcolor"
+        android:gravity="top"
+        android:isScrollContainer="false" >
+
+        <RelativeLayout
+            android:id="@+id/relChatRoomChat"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" >
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:src="@mipmap/back_white" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:clickable="true"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/chatrooms1"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:maxLength="15"
+                />
+
+            <TextView
+                android:id="@+id/txtNames"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtTitle"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/imgBack"
+                android:layout_toRightOf="@+id/imgBack"
+                android:clickable="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:visibility="gone"
+                android:singleLine="true"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relUserChat"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/imgBack1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:src="@mipmap/back_white" />
+
+            <TextView
+                android:id="@+id/txtTitle1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/chatrooms1"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:isScrollContainer="true"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ListView
+                android:clipToPadding="false"
+                android:padding="8dp"
+                android:id="@+id/listView"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:scrollbars="none"
+                android:stackFromBottom="true" >
+            </ListView>
+
+            <TextView
+                android:id="@+id/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:text="@string/nomsg"
+                android:textSize="22sp"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/recycler_view_giphy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_giphy_search"
+        android:paddingRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/keyboard_icon"
+            android:id="@+id/keyboard_icon"
+            android:layout_width="25dp"
+            android:layout_height="20dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@+id/keyboard_icon"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/minorround_border"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:id="@+id/edt_search_giphy"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"
+            android:layout_toLeftOf="@+id/search_icon"
+            android:layout_centerVertical="true"
+            android:background="#ffffff"
+            android:inputType="text"
+            android:maxLines="1"
+            android:hint="Search..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:src="@android:drawable/ic_menu_search"
+            android:id="@+id/search_icon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom_options"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp" >
+
+        <ImageView
+            android:id="@+id/imgAttachment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/attachments_symbol" />
+
+        <ImageView
+            android:id="@+id/imgSticker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/imgGif"
+            android:layout_toRightOf="@+id/imgGif"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/sticker_symbol" />
+
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_toRightOf="@+id/imgAttachment"
+            android:id="@+id/imgGif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/gif_symbol" />
+
+        <EditText
+            android:id="@+id/edt_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toEndOf="@+id/imgSticker"
+            android:layout_toLeftOf="@+id/imgSend"
+            android:layout_toRightOf="@+id/imgSticker"
+            android:layout_toStartOf="@+id/imgSend"
+            android:background="@drawable/minorround_border"
+            android:hint="@string/typemessage"
+            android:maxLines="3"
+            android:padding="8dp"
+            android:scrollbars="vertical" />
+
+        <ImageView
+            android:id="@+id/imgSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/sending_symbol"
+            android:padding="5dp"/>
+    </RelativeLayout>
+
+</LinearLayout>

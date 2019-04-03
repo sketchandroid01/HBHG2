@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.hbhgdating">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+
+    <uses-permission android:name="com.example.googlemaps.permission.MAPS_RECEIVE" />
+
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
+    <uses-feature android:name="android.hardware.location" android:required="true" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="true" />
+
+
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+
+
+    <application
+        tools:replace="android:theme"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:largeHeap="true"
+        android:hardwareAccelerated="false"
+        android:name=".utils.Global_Class"
+        >
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+       
+        <activity android:name="com.hbhgdating.screens.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.hbhgdating.screens.IntroActivity"
+            android:screenOrientation="portrait">
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="sociallogin"
+                    android:host="redirect" />
+
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".screens.Check_Video"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity android:name="com.hbhgdating.screens.MainActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.desmond.squarecamera.CameraActivity"/>
+
+        <activity android:name="com.hbhgdating.screens.ProfileActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".screens.Fetch_profile_pic_fb"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".screens.GoogleSearchView"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Chat.StickersView"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".insta.Video_Player_Activity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity android:name=".Chat.Get_Matches_msg"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".Chat.Chat_screen_new"
+            android:screenOrientation="portrait"
+
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".screens.View_Video"
+            android:screenOrientation="portrait"
+
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-################~##########"/>
+
+
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+       App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/MAPAPI_KEY" />
+
+
+        <activity
+            android:name=".screens.FavoriteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name=".screens.NotificationActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".screens.Image_Filter_for_Uri"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity
+            android:name=".Trimmer.TrimmerActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+
+        <activity
+            android:name=".screens.Image_Filter_for_URL"
+            android:screenOrientation="portrait" >
+
+        </activity>
+
+        <activity
+            android:name=".screens.Facebook_Insta_Login"
+            android:screenOrientation="portrait" >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+            </intent-filter>
+
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="sociallogin"
+                    android:host="redirect" />
+
+            </intent-filter>
+
+        </activity>
+
+
+        <activity
+            android:name=".Fb_Insta_Media.ImageFilesOnly"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Fb_Insta_Media.AllMediaFiles"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Fb_Insta_Media.AllMediaFiles_2"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Chat.ChatImageFullScreen"
+            android:screenOrientation="portrait" >
+        </activity>
+
+
+        <activity android:name=".screens.Bloked_User_Screen"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".screens.UserProfileActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+
+        <activity android:name=".Chat.CreateChatRoomActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Chat.Get_Chatroom_msg"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Chat.ChatroomMembersActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".Chat.ChatroomVideoImg"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".from_notification.UserVideoShow_Noti"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <activity android:name=".from_notification.Get_Matches_msg_Noti"
+            android:screenOrientation="portrait" >
+        </activity>
+
+
+        <activity android:name=".from_notification.Get_Chatroom_msg_Noti"
+            android:screenOrientation="portrait" >
+        </activity>
+
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.hbhgdating.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+
+
+        <service
+            android:name=".Services.MyService"
+            android:enabled="true"
+            android:exported="true"
+            />
+
+        <service android:name=".Services.MyFcmListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Services.MyInstanceIDListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+
+
+    </application>
+
+
+
+</manifest>

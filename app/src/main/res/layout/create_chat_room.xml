@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/title_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Creating new Chatroom"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/_20sdp"
+            android:padding="@dimen/_10sdp"
+            android:textColor="@color/white"
+            />
+
+
+        <RelativeLayout
+            android:id="@+id/layout_top"
+            android:layout_below="@+id/title_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+          >
+
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:hint="Add title of Chatroom"
+                android:textCursorDrawable="@color/white"
+                android:padding="@dimen/_7sdp"
+                android:textColorHint="@color/off_white"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/white"
+                android:background="@drawable/white_border"
+
+                />
+            <EditText
+                android:id="@+id/edt_tags"
+                android:layout_below="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/off_white"
+                android:textCursorDrawable="@color/white"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text=""
+                android:padding="@dimen/_7sdp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/white_border"
+                android:hint="Add Tags separated by ( , )"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/white"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/white_border"
+            android:layout_centerInParent="true"
+            android:padding="1dp" >
+
+            <ImageView
+                android:id="@+id/img1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY" />
+
+
+            <RelativeLayout
+                android:id="@+id/rl_button"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerInParent="true"
+                >
+
+                <ImageView
+                    android:id="@+id/imgPlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="center"
+                    android:src="@mipmap/video2" />
+                <TextView
+                    android:id="@+id/add_video_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgPlay"
+                    android:text="Add Video"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:textSize="@dimen/_14sdp"
+                    android:textColor="@color/off_white"
+                    />
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+
+                >
+
+                <TextView
+                    android:id="@+id/invite"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Invite &amp; Go Live"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:background="@color/colorPrimary"/>
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/welcome_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Go live"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:visibility="gone"
+        android:id="@+id/rl_invite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txt"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="Select Friends"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <ListView
+            android:scrollbars="none"
+            android:padding="10dp"
+            android:clipToPadding="false"
+            android:layout_above="@+id/golive"
+            android:id="@+id/listview"
+            android:background="#ffffff"
+            android:layout_below="@+id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        </ListView>
+
+        <TextView
+            android:layout_alignParentBottom="true"
+            android:id="@+id/golive"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="Go Live"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Add Details"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_7sdp"
+
+        android:layout_below="@id/rl1">
+
+        <RelativeLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name :"
+                android:layout_weight="1"
+                android:padding="@dimen/_7sdp"
+
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"/>
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_toRightOf="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ankita"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/transparent"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll1"
+            android:orientation="horizontal"
+
+
+            android:id="@+id/ll2"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_dob1"
+                android:text="Date of Birth : "
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="@dimen/_14sdp"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_dob"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+
+                />
+
+
+            <ImageButton
+
+                android:id="@+id/img_btn_cal"
+                android:background="@null"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/cal_48"
+                />
+
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rl2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll2"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/edt_gender"
+                android:text="Gender :"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="@dimen/_14sdp"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                />
+
+            <RadioGroup
+                android:id="@+id/rg1"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/edt_gender"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:textColorHighlight="@color/colorPrimaryDark"
+                    android:text="Male"
+                    android:textSize="@dimen/_14sdp"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:textColorHighlight="@color/colorPrimaryDark"
+                    android:text="Female"
+                    android:textSize="@dimen/_14sdp"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RadioGroup>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl2"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/rl3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl2">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edt_gender_orientation"
+                    android:text="Orientation :"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    />
+
+
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          >
+
+            <RelativeLayout
+                android:id="@+id/m_orient_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/straight_male"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="10dp"
+                    />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_straight_male1"
+                    android:layout_toRightOf="@+id/iv1"
+                    android:text="Straight"
+                    android:layout_gravity="start"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="start"
+                    android:padding="10dp"
+                    />
+                <ImageView
+                    android:id="@+id/tick_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/tick_96"
+                    android:layout_gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/m_orient_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/m_orient_1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/gay"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_gay1"
+                    android:text="Gay"
+                    android:layout_gravity="start"
+                    android:textColor="@color/black"
+                    android:layout_toRightOf="@+id/iv2"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:padding="10dp"
+                    />
+                <ImageView
+                    android:id="@+id/tick_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/tick_96"
+                    android:layout_gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/m_orient_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/m_orient_2"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:src="@mipmap/bisexual_male"
+                    android:padding="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_bisexual_male"
+                    android:text="Bisexual"
+                    android:layout_gravity="start"
+                    android:layout_toRightOf="@+id/iv3"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:padding="10dp"
+                    />
+                <ImageView
+                    android:id="@+id/tick_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/tick_96"
+                    android:layout_gravity="end"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll3"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/rl6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/edt_gender_orientation1"
+                    android:text="Orientation :"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <RelativeLayout
+                    android:id="@+id/f_orient_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+
+                    android:layout_marginTop="6dp">
+
+                    <ImageView
+                        android:id="@+id/iv4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/straight_male"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:padding="10dp"
+                        />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_straight_female1"
+                        android:text="Straight"
+                        android:layout_gravity="start"
+                        android:layout_toRightOf="@+id/iv4"
+                        android:textColor="@color/black"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="@dimen/_14sdp"
+
+                        android:padding="10dp"
+                        />
+                    <ImageView
+                        android:id="@+id/tick_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/tick_96"
+                        android:layout_gravity="end"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:padding="10dp"
+                        />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/f_orient_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/f_orient_1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/lesbian"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_lesbian1"
+                        android:text="Lesbian"
+                        android:layout_toRightOf="@+id/iv5"
+                        android:textColor="@color/black"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="@dimen/_14sdp"
+                        android:padding="10dp"
+                        />
+                    <ImageView
+                        android:id="@+id/tick_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/tick_96"
+                        android:layout_gravity="end"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:padding="10dp"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/f_orient_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/f_orient_2"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:src="@mipmap/bisexual_female"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_bisexual_female"
+                        android:text="Bisexual"
+                        android:layout_toRightOf="@+id/iv6"
+                        android:layout_gravity="start"
+                        android:textColor="@color/black"
+                        android:textColorHint="@android:color/black"
+                        android:textSize="@dimen/_14sdp"
+
+                        android:padding="10dp"
+                        />
+                    <ImageView
+                        android:id="@+id/tick_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/tick_96"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight="3"
+                        android:padding="10dp"
+                        />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/rel"
+        android:background="@color/colorPrimary"/>
+    <RelativeLayout
+        android:id="@+id/rl9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_foot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Update"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/ll_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:clickable="false"
+        android:visibility="gone"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            >
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="@android:style/Widget.ProgressBar.Large.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_centerInParent="true"
+                android:padding="20dp"
+                android:clickable="false"
+                android:indeterminateDrawable="@drawable/progress"
+                />
+
+            <ImageView
+                android:id="@+id/textView1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/sunglass"
+                android:clickable="false"/>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                android:layout_below="@+id/progressBar1"
+                android:text="Saving your video..."
+                android:layout_centerHorizontal="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+
+                />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

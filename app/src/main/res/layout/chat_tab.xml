@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <RelativeLayout
+        android:id="@+id/relSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:background="@color/black"
+        android:paddingBottom="5dp"
+        android:paddingEnd="4dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="4dp"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/searchbg"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" >
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_2sdp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/search32" />
+
+            <EditText
+                android:id="@+id/inputSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:background="@color/trans"
+                android:layout_toLeftOf="@+id/imgSearch"
+                android:layout_toStartOf="@+id/imgSearch"
+                android:hint="@string/search"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColorHint="@color/mediumgray" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relSearch"
+        android:layout_above="@+id/ll_footer">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_7sdp"
+        android:layout_marginRight="@dimen/_7sdp"
+        android:layout_above="@+id/mcr_img_view"
+        >
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
+
+        <RelativeLayout
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:background="@color/light_grey"
+            android:visibility="gone"
+            android:layout_height="0.5dp"
+            android:animateLayoutChanges="true"
+            />
+
+
+        <TextView
+            android:id="@+id/msg_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Messages"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/_4sdp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textSize="@dimen/_14sdp"
+            android:layout_below="@+id/view_1"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rl2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_below="@+id/msg_view"
+            android:animateLayoutChanges="true"
+           >
+
+            <HorizontalScrollView
+                android:scrollbars="none"
+                android:id="@+id/hsv_matches_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <LinearLayout
+                    android:id="@+id/matches_view"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    >
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/view_2"
+            android:layout_width="match_parent"
+            android:background="@color/light_grey"
+            android:layout_below="@+id/rl2"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_4sdp"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/fcr_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Featured Chatrooms"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textSize="@dimen/_14sdp"
+            android:layout_below="@+id/view_2"/>
+        <RelativeLayout
+            android:id="@+id/rl3"
+            android:layout_below="@+id/fcr_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            >
+
+            <HorizontalScrollView
+                android:id="@+id/hsv_fcr_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/fcr_ll"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </RelativeLayout>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tcr_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trending Chatrooms"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textSize="@dimen/_14sdp"
+            android:layout_below="@+id/rl3"/>
+
+
+
+        <RelativeLayout
+            android:id="@+id/rl4"
+            android:layout_below="@+id/tcr_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            >
+
+            <HorizontalScrollView
+                android:id="@+id/hsv_tcr_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/tcr_ll"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/mcr_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Chatrooms"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:textSize="@dimen/_14sdp"
+            android:layout_below="@+id/rl4"/>
+        <RelativeLayout
+            android:id="@+id/rl5"
+            android:layout_below="@+id/mcr_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            >
+
+            <HorizontalScrollView
+                android:id="@+id/hsv_mcr_msg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/mcr_ll"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    >
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/mcr_img_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_border"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_7sdp"
+        android:animateLayoutChanges="true"
+       >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Create new Chatroom"
+            android:textSize="@dimen/_16sdp"
+            android:padding="@dimen/_7sdp"
+            android:textColor="@color/colorPrimary"/>
+
+    </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_footer"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:animateLayoutChanges="true"
+        android:layout_height="?android:attr/actionBarSize" >
+
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            layout="@layout/bottom_tab_bar" />
+    </LinearLayout>
+
+</RelativeLayout>
