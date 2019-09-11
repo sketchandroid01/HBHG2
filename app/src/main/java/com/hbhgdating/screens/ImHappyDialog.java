@@ -41,11 +41,22 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,7 +66,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
+
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 
 /**
@@ -63,36 +81,36 @@ import cz.msebera.android.httpclient.Header;
  */
 public class ImHappyDialog extends Dialog{
 
-    ImageView img_btn_cal;
+    private ImageView img_btn_cal;
 
-    SimpleDateFormat simpleDateFormat;
-    Calendar myCalendar = Calendar.getInstance();
-    TextView edt_dob;
-    String date_to_send;
+    private SimpleDateFormat simpleDateFormat;
+    private Calendar myCalendar = Calendar.getInstance();
+    private TextView edt_dob;
+    private String date_to_send;
     private int mYear, mMonth, mDay;
-    RadioGroup select_gender;
-    String  gender = null;
-    LinearLayout ll3,ll4;
-    RelativeLayout rl9,m_orient_1,m_orient_2,m_orient_3,f_orient_1,f_orient_2,f_orient_3;
-    ImageView  tick_1,tick_2,tick_3,tick_4,tick_5,tick_6;
-    EditText et_name;
-    Global_Class global_class;
-    RadioButton rb1,rb2;
-    String check_orientation = "";
+    private RadioGroup select_gender;
+    private String  gender = null;
+    private LinearLayout ll3,ll4;
+    private RelativeLayout rl9,m_orient_1,m_orient_2,m_orient_3,f_orient_1,f_orient_2,f_orient_3;
+    private ImageView  tick_1,tick_2,tick_3,tick_4,tick_5,tick_6;
+    private EditText et_name;
+    private Global_Class global_class;
+    private RadioButton rb1,rb2;
+    private String check_orientation = "";
     private Context context;
-    SharedPref sharedPref;
+    private SharedPref sharedPref;
 
-    ArrayList<File> File_array;
-    ArrayList<String> Urls_array;
+    private ArrayList<File> File_array;
+    private ArrayList<String> Urls_array;
 
-    File profile_image;
+    private File profile_image;
 
-    boolean is_video = false;
-    boolean is_file = false;
+    private boolean is_video = false;
+    private boolean is_file = false;
 
-    File videoFile;
+    private File videoFile;
 
-    Dialog progressDialog;
+    private Dialog progressDialog;
 
     public ImHappyDialog(Context mcontext) {
         super(mcontext);
@@ -104,12 +122,14 @@ public class ImHappyDialog extends Dialog{
         progressDialog = new Dialog(context, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_creating_profile);
-        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
 
 
         File_array = new ArrayList<>();
         Urls_array = new ArrayList<>();
+
+
 
     }
 
@@ -511,8 +531,6 @@ public class ImHappyDialog extends Dialog{
 
         Utility utility;
 
-
-
         @Override
         protected void onPreExecute() {
 
@@ -599,7 +617,6 @@ public class ImHappyDialog extends Dialog{
         }
 
     }
-
 
 
     public static int getAge(Date dateOfBirth) {
@@ -709,11 +726,13 @@ public class ImHappyDialog extends Dialog{
         }
 
 
-
-
         Log.d(TAG ,"AsyncHttpClient URL- " + All_Constants_Urls.LOGIN);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , 30*1000);
         client.post(All_Constants_Urls.LOGIN, params, new JsonHttpResponseHandler() {
@@ -726,14 +745,10 @@ public class ImHappyDialog extends Dialog{
                 if (response != null) {
                     try {
 
-
                         int success = response.optInt("success");
                         String message = response.optString("message");
 
                         if (success == 0){
-
-                           // Toast.makeText(context, ""+message, Toast.LENGTH_LONG).show();
-
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             builder.setTitle("HBHG");
@@ -751,7 +766,6 @@ public class ImHappyDialog extends Dialog{
 
 
                             progressDialog.dismiss();
-
 
                         }else
                         if (success == 1){
@@ -888,6 +902,36 @@ public class ImHappyDialog extends Dialog{
 
 
 
+
+    public SSLContext getSslContext() {
+
+        TrustManager[] byPassTrustManagers = new TrustManager[] { new X509TrustManager() {
+            public X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+
+            public void checkClientTrusted(X509Certificate[] chain, String authType) {
+            }
+
+            public void checkServerTrusted(X509Certificate[] chain, String authType) {
+            }
+        } };
+
+        SSLContext sslContext=null;
+
+        try {
+            sslContext = SSLContext.getInstance("TLS");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            sslContext.init(null, byPassTrustManagers, new SecureRandom());
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+
+        return sslContext;
+    }
 
 
 

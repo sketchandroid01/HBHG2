@@ -10,15 +10,15 @@ public class All_Constants_Urls {
     public static final String TAG = "HBHG_ANDROID";
 
 
-    public static final String GIF_URL_NO = "http://lab-5.sketchdemos.com/PHP-WEB-SERVICES/P-898-hey_boy_hey_girl_ci/uploads/gif/no.gif";
-    public static final String GIF_URL_HEY = "http://lab-5.sketchdemos.com/PHP-WEB-SERVICES/P-898-hey_boy_hey_girl_ci/uploads/gif/HeartHey.gif";
-    public static final String GIF_URL_test = "http://38.media.tumblr.com/e3f0a39e1cf30a3f49311010352feda1/tumblr_no98tgBQ221td6160o1_500.gif";
+    public static final String GIF_URL_NO = "https://lab-5.sketchdemos.com/PHP-WEB-SERVICES/P-898-hey_boy_hey_girl_ci/uploads/gif/no.gif";
+    public static final String GIF_URL_HEY = "https://lab-5.sketchdemos.com/PHP-WEB-SERVICES/P-898-hey_boy_hey_girl_ci/uploads/gif/HeartHey.gif";
+    public static final String GIF_URL_test = "https://38.media.tumblr.com/e3f0a39e1cf30a3f49311010352feda1/tumblr_no98tgBQ221td6160o1_500.gif";
 
 
 
     /// Urls
 
-    private static String BASE_URL = "http://lab-5.sketchdemos.com/PHP-WEB-SERVICES/P-898-hey_boy_hey_girl_ci/service/";
+    private static final String BASE_URL = "https://lab-5.sketchdemos.com/PHP-WEB-SERVICES/P-898-hey_boy_hey_girl_ci/service/";
 
 
     public static final String LOGIN =                       BASE_URL + "login/index";
@@ -148,6 +148,7 @@ public class All_Constants_Urls {
     public static final String latitude = "lat";
     public static final String longitude = "long";
     public static final String text = "text";
+    public static final String keyword = "keyword";
     public static final String likes_count = "likes_count";
     public static final String noti_content = "noti_content";
     public static final String admin_details = "admin_details";

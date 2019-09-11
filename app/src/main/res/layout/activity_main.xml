@@ -37,7 +37,6 @@
                     android:background="#F29B0F"
                     />-->
 
-
                 <TextView
                     android:id="@+id/notfound_txt"
                     android:layout_width="wrap_content"

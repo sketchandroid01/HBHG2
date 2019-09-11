@@ -51,9 +51,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.hbhgdating.Chat.Chat_screen_new;
-import com.hbhgdating.Chat.Get_Matches_msg;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
+import com.hbhgdating.chat.Chat_screen_new;
+import com.hbhgdating.chat.Get_Matches_msg;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
 import com.hbhgdating.R;
 import com.hbhgdating.adapter.Favourite_Search_Adapter;
 import com.hbhgdating.adapter.GridViewAdapter;
@@ -87,6 +87,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 
 public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCallback,
@@ -155,7 +156,7 @@ public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCa
 		progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
 		progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-		progressDialog.setCancelable(false);
+		progressDialog.setCanceledOnTouchOutside(false);
 
 		isloadAds = false;
 		setView();
@@ -908,6 +909,10 @@ public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCa
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1303,6 +1308,11 @@ public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCa
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1438,6 +1448,9 @@ public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCa
 		Log.d(TAG ,"AsyncHttpClient URL- " + URL);
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1498,6 +1511,11 @@ public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCa
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1555,6 +1573,10 @@ public class FavoriteActivity extends AppCompatActivity implements  OnMapReadyCa
 		Log.d(TAG ,"AsyncHttpClient URL- " + URL);
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {

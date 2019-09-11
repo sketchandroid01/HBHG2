@@ -1,21 +1,14 @@
 package com.hbhgdating.from_notification;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
-import android.content.pm.PackageManager;
-import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -37,18 +30,8 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.cunoraz.gifview.library.GifView;
 import com.danikula.videocache.HttpProxyCacheServer;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.hbhgdating.Chat.Chat_screen_new;
+import com.hbhgdating.chat.Chat_screen_new;
 import com.hbhgdating.R;
 import com.hbhgdating.screens.FavoriteActivity;
 import com.hbhgdating.screens.NotificationActivity;
@@ -70,19 +53,16 @@ import com.hbhgdating.utils.SharedPref;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
@@ -110,6 +90,9 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
     String user_id, from;
     private String Font_User_Id;
 
+    RelativeLayout rel_msg_box;
+
+
 
 
     @Override
@@ -123,7 +106,7 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
         progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-       // progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
         setView();
 
@@ -208,12 +191,12 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
         tv_user_info1 = (TextView) findViewById(R.id.tv_user_info1);
         tv_user_info2 = (TextView) findViewById(R.id.tv_user_info2);
         notfound_txt = (TextView) findViewById(R.id.notfound_txt);
+        rel_msg_box = findViewById(R.id.rel_msg_box);
         notfound_txt.setVisibility(View.GONE);
+        rel_msg_box.setVisibility(View.GONE);
         tv_user_info1.setVisibility(View.GONE);
         tv_user_info2.setVisibility(View.GONE);
 
-       // iv_bg = (ImageView) findViewById(R.id.iv_bg);
-       // iv_bg.setVisibility(View.VISIBLE);
 
         imghbhgleft = (ImageView) findViewById(R.id.imghbhgleft);
         imghbhgright = (ImageView) findViewById(R.id.imghbhgright);
@@ -636,9 +619,7 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
 
     public void getUserData(){
 
-
         progressDialog.show();
-
 
         String URL = All_Constants_Urls.GET_PROFILE_DATA;
         AsyncHttpClient client = new AsyncHttpClient();
@@ -654,14 +635,15 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
      //   Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
-      //  client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.post(URL, params, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-
               //  Log.d(TAG, "onSuccess- " + response.toString());
-
                 if (response != null) {
                     try {
 
@@ -669,18 +651,11 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
                         int success = response.optInt("success");
 
                         if (success == 0){
-
-                           // Toast.makeText(getApplicationContext(), "Something error", Toast.LENGTH_LONG).show();
-
                             notfound_txt.setVisibility(View.VISIBLE);
 
                             progressDialog.dismiss();
 
-
-                        }else
-                        if (success == 1){
-
-                            iv_bg.setVisibility(View.GONE);
+                        }else if (success == 1){
 
                             User_Data = response.toString();
 
@@ -700,7 +675,6 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
                             updateFCM();
 
                         }
-
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -817,14 +791,11 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
 
                 setData_Slider1(image_video);
 
-
-
             }
 
         }catch (Exception e){
             e.printStackTrace();
         }
-
 
     }
 
@@ -897,11 +868,6 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
                 //mp.setVolume(0, 0);
             }
         });
-        //Setting MediaController and URI, then starting the videoView
-
-       // proxy = Global_Class.getProxy(this);
-       // final String proxyUrl = proxy.getProxyUrl(videoUri);
-
 
         videoView1.setVideoURI(Uri.parse(videoUri));
         videoView1.setMediaController(null);
@@ -950,6 +916,11 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
       //  Log.d(TAG ,"AsyncHttpClient URL- " + URL);
       //  Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1033,6 +1004,10 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
       //  Log.d(TAG ,"AsyncHttpClient URL- " + URL);
       //  Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1085,17 +1060,11 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
 
         });
 
-
-
-
     }
 
 
     public void likeUnlikeProfile(final int is_like){
-
-
        // progressDialog.show();
-
 
         String URL = All_Constants_Urls.LIKE_UNLIKE_PROFILE;
         AsyncHttpClient client = new AsyncHttpClient();
@@ -1114,6 +1083,10 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
      //   Log.d(TAG ,"AsyncHttpClient URL- " + URL);
      //   Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1134,27 +1107,15 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
 
                             progressDialog.dismiss();
 
-
                         }else
                         if (success == 1){
 
-
-
                             if (is_like == 1){
-
                                 sharedPref.save_My_Matches(null);
-
-                               // Toast.makeText(getApplicationContext(), "Like", Toast.LENGTH_LONG).show();
-                            }else {
-
-                              //  Toast.makeText(getApplicationContext(), "Unlike", Toast.LENGTH_LONG).show();
                             }
-
-
                             progressDialog.dismiss();
 
                         }
-
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -1190,6 +1151,12 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
         params.put(All_Constants_Urls.device_token, refreshedToken);
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
+
+
         final String TAG = All_Constants_Urls.TAG;
 
       //  Log.d(TAG ,"AsyncHttpClient URL- " + URL);
@@ -1206,22 +1173,7 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
 
                 if (response != null) {
                     try {
-
-
                         int success = response.optInt("success");
-
-                        if (success == 0){
-
-                          //  Toast.makeText(getApplicationContext(), "Something error", Toast.LENGTH_LONG).show();
-
-
-
-                        }else
-                        if (success == 1){
-
-
-
-                        }
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -1232,10 +1184,6 @@ public class UserVideoShow_Noti extends AppCompatActivity implements BaseSliderV
             @Override
             public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
                 Log.d(TAG, "onFailure- " + res);
-
-                /*android.app.AlertDialog alert = new android.app.AlertDialog.Builder(MainActivity.this).create();
-                alert.setMessage("Server Error");
-                alert.show();*/
             }
 
 

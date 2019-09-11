@@ -9,13 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
-import com.hbhgdating.DatabaseLocal.ImageData;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
+import com.hbhgdating.databaseLocal.ImageData;
 import com.hbhgdating.R;
 import com.hbhgdating.utils.Global_Class;
 import com.hbhgdating.utils.SharedPref;

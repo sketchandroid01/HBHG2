@@ -39,6 +39,7 @@ import com.hbhgdating.slider.SliderTypes.BaseSliderView;
 import com.hbhgdating.slider.SliderTypes.TextSliderView;
 import com.hbhgdating.slider.Tricks.ViewPagerEx;
 import com.hbhgdating.utils.All_Constants_Urls;
+import com.hbhgdating.utils.Common;
 import com.hbhgdating.utils.Global_Class;
 import com.hbhgdating.utils.ScalableVideoView;
 import com.hbhgdating.utils.SharedPref;
@@ -56,6 +57,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 public class UserProfileActivity extends Activity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     ImageView imgFood1, imgFood2, imgFood3, imgMusic1, imgMusic2, imgMusic3,
@@ -119,7 +121,7 @@ public class UserProfileActivity extends Activity implements BaseSliderView.OnSl
         progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
 
 
@@ -1599,6 +1601,10 @@ public class UserProfileActivity extends Activity implements BaseSliderView.OnSl
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         int DEFAULT_TIMEOUT = 30 * 1000;
         client.setMaxRetriesAndTimeout(5 , DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1683,6 +1689,11 @@ public class UserProfileActivity extends Activity implements BaseSliderView.OnSl
 
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 
         int DEFAULT_TIMEOUT = 30 * 1000;

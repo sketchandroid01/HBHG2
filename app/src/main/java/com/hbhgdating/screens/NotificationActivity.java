@@ -24,8 +24,8 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.hbhgdating.Chat.Chat_screen_new;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
+import com.hbhgdating.chat.Chat_screen_new;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
 import com.hbhgdating.R;
 import com.hbhgdating.adapter.Notification_Adapter;
 import com.hbhgdating.utils.All_Constants_Urls;
@@ -43,6 +43,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 public class NotificationActivity extends Activity {
 	ListView listView;
@@ -74,7 +75,7 @@ public class NotificationActivity extends Activity {
 		progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
 		progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-		progressDialog.setCancelable(false);
+		progressDialog.setCanceledOnTouchOutside(false);
 		List_Noification = new ArrayList<>();
 
 
@@ -248,6 +249,10 @@ public class NotificationActivity extends Activity {
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -368,6 +373,11 @@ public class NotificationActivity extends Activity {
 		Log.d(TAG ,"AsyncHttpClient URL- " + URL);
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
@@ -568,6 +578,10 @@ public class NotificationActivity extends Activity {
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -639,6 +653,11 @@ public class NotificationActivity extends Activity {
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -708,6 +727,10 @@ public class NotificationActivity extends Activity {
 		Log.d(TAG ,"AsyncHttpClient URL- " + URL);
 		Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+		client.setSSLSocketFactory(
+				new SSLSocketFactory(Common.getSslContext(),
+						SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 		client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
 		client.post(URL, params, new JsonHttpResponseHandler() {

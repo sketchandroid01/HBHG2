@@ -10,8 +10,16 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import java.io.File;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class Common {
 
@@ -28,6 +36,9 @@ public class Common {
 	public static final String Key_ChatroomNoti = "getChatroomNoti";
 
 	public static final String likes_your_profile = "likes your profile";
+
+
+	public static final String privacy_url = "http://heyboyheygirl.co/privatepolicy.php";
 
 
 	public static final int DEFAULT_TIMEOUT = 8 * 1000;
@@ -101,4 +112,40 @@ public class Common {
 			+ File.separator + "Pictures";
 	public static final String strTmpVideoFolder = Environment.getExternalStorageDirectory()
 			+ File.separator + "Video";
+
+
+
+
+	public static SSLContext getSslContext() {
+
+		TrustManager[] byPassTrustManagers = new TrustManager[] { new X509TrustManager() {
+			public X509Certificate[] getAcceptedIssuers() {
+				return new X509Certificate[0];
+			}
+
+			public void checkClientTrusted(X509Certificate[] chain, String authType) {
+			}
+
+			public void checkServerTrusted(X509Certificate[] chain, String authType) {
+			}
+		} };
+
+		SSLContext sslContext=null;
+
+		try {
+			sslContext = SSLContext.getInstance("TLS");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		try {
+			sslContext.init(null, byPassTrustManagers, new SecureRandom());
+		} catch (KeyManagementException e) {
+			e.printStackTrace();
+		}
+
+		return sslContext;
+	}
+
+
+
 }

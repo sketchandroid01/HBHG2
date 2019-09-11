@@ -45,7 +45,7 @@ public class googleSearchViewAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         ImageView grid_item_image;
-        ImageView image;
+        ImageView image, iv_new;
     }
 
     public googleSearchViewAdapter(Activity con, ArrayList<String> google_search_val, String strSearchText) {
@@ -80,12 +80,14 @@ public class googleSearchViewAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
 
             viewHolder.grid_item_image = (ImageView) convertView.findViewById(R.id.grid_item_image);
+            viewHolder.iv_new = (ImageView) convertView.findViewById(R.id.iv_new);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
 
         }
 
+        viewHolder.iv_new.setVisibility(View.GONE);
 
 
         Picasso.with(mactivity).load(google_search_val.get(position))

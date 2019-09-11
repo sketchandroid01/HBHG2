@@ -19,16 +19,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.desmond.squarecamera.CameraActivity;
-import com.hbhgdating.Fb_Insta_Media.AllMediaFiles;
-import com.hbhgdating.Fb_Insta_Media.ImageFilesOnly;
+import com.hbhgdating.fb_Insta_Media.ImageFilesOnly;
 import com.hbhgdating.R;
 import com.hbhgdating.screens.Facebook_Insta_Login;
 import com.hbhgdating.screens.GoogleSearchView;
 import com.hbhgdating.utils.Global_Class;
 import com.hbhgdating.utils.SharedPref;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

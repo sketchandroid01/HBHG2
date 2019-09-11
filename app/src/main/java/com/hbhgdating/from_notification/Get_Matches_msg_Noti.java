@@ -29,13 +29,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hbhgdating.Chat.ChatMessage;
-import com.hbhgdating.Chat.Chat_screen_new;
-import com.hbhgdating.Chat.GiphyAdapter;
-import com.hbhgdating.Chat.SingleChatRoomDetailListViewAdapter;
-import com.hbhgdating.Chat.StickersView;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
-import com.hbhgdating.DatabaseLocal.SingleChatData;
+import com.hbhgdating.chat.ChatMessage;
+import com.hbhgdating.chat.Chat_screen_new;
+import com.hbhgdating.chat.GiphyAdapter;
+import com.hbhgdating.chat.SingleChatRoomDetailListViewAdapter;
+import com.hbhgdating.chat.StickersView;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
+import com.hbhgdating.databaseLocal.SingleChatData;
 import com.hbhgdating.R;
 import com.hbhgdating.utils.All_Constants_Urls;
 import com.hbhgdating.utils.Common;
@@ -61,6 +61,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 
 /**
@@ -543,6 +544,11 @@ public class Get_Matches_msg_Noti extends AppCompatActivity {
      //   Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -696,6 +702,11 @@ public class Get_Matches_msg_Noti extends AppCompatActivity {
      //   Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT_30);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -842,6 +853,10 @@ public class Get_Matches_msg_Noti extends AppCompatActivity {
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {

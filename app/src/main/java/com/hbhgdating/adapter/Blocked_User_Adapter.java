@@ -19,6 +19,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.hbhgdating.R;
 import com.hbhgdating.screens.MainActivity;
 import com.hbhgdating.utils.All_Constants_Urls;
+import com.hbhgdating.utils.Common;
 import com.hbhgdating.utils.Global_Class;
 import com.hbhgdating.utils.SharedPref;
 import com.loopj.android.http.AsyncHttpClient;
@@ -37,6 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 /**
  * Created by Developer on 10/11/17.
@@ -217,6 +219,10 @@ public class Blocked_User_Adapter extends BaseAdapter {
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         int DEFAULT_TIMEOUT = 30 * 1000;
         client.setMaxRetriesAndTimeout(5 , DEFAULT_TIMEOUT);

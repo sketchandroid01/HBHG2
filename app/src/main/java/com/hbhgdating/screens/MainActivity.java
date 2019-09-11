@@ -48,10 +48,10 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.hbhgdating.Chat.Chat_screen_new;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
+import com.hbhgdating.chat.Chat_screen_new;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
 import com.hbhgdating.R;
-import com.hbhgdating.Services.MyService;
+import com.hbhgdating.services.MyService;
 import com.hbhgdating.slider.Animations.DescriptionAnimation;
 import com.hbhgdating.slider.Indicators.PagerIndicator;
 import com.hbhgdating.slider.SliderLayout;
@@ -81,6 +81,7 @@ import java.util.List;
 import java.util.Random;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
 
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-       // progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
 
 
@@ -315,7 +316,8 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(MainActivity.this, UserProfileActivity.class);
+                Intent intent1 = new Intent(MainActivity.this,
+                        UserProfileActivity.class);
                 intent1.putExtra("userid", Font_User_Id);
                 intent1.putExtra("data", List_Matches.get(Matches_list_Position));
                 startActivity(intent1);
@@ -971,6 +973,11 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
+
       //  client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1099,9 +1106,11 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
             String country = basic_info.getString(All_Constants_Urls.country);
 
             String gender = "";
-            if (strGender.equalsIgnoreCase("m")){
+            if (strGender.equalsIgnoreCase("m")
+                    || strGender.equalsIgnoreCase("male") ){
                 gender = "Male";
-            }else if (strGender.equalsIgnoreCase("f")){
+            }else if (strGender.equalsIgnoreCase("f")
+                    || strGender.equalsIgnoreCase("female")){
                 gender = "Female";
             }
 
@@ -1131,12 +1140,14 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
             }
 
 
-            if (strGender.equalsIgnoreCase("m")){
+            if (strGender.equalsIgnoreCase("m")
+                    || strGender.equalsIgnoreCase("male") ){
                 imghbhgleft.setImageResource(R.mipmap.no_boy_symbol);
                 imghbhgright.setImageResource(R.mipmap.hey_boy_symbol);
                 imghbhgright.setVisibility(View.VISIBLE);
                 imghbhgleft.setVisibility(View.VISIBLE);
-            }else if (strGender.equalsIgnoreCase("f")){
+            }else if (strGender.equalsIgnoreCase("f")
+                    || strGender.equalsIgnoreCase("female") ){
                 imghbhgleft.setImageResource(R.mipmap.no_girl_symbol);
                 imghbhgright.setImageResource(R.mipmap.hey_girl_symbol);
                 imghbhgright.setVisibility(View.VISIBLE);
@@ -1338,6 +1349,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1422,6 +1437,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1502,6 +1521,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1587,6 +1610,10 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1639,7 +1666,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
                             }
 
                             if (List_Matches.size() != 0){
-
 
                                 showProfileVideos(List_Matches.get(Matches_list_Position));
 
@@ -1700,8 +1726,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
         params.put(All_Constants_Urls.Token, All_Constants_Urls.TOKEN_FIXED);
         params.put(All_Constants_Urls.user_id, sharedPref.get_Use_Id());
-        params.put(All_Constants_Urls.text, key);
-
+        params.put(All_Constants_Urls.keyword, key);
 
 
         final String TAG = All_Constants_Urls.TAG;
@@ -1709,6 +1734,11 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -1828,6 +1858,11 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         params.put(All_Constants_Urls.device_token, refreshedToken);
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
+
         final String TAG = All_Constants_Urls.TAG;
 
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
@@ -1905,6 +1940,11 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -1954,7 +1994,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     }
 
-
     public void getUserBlockOrNot(){
 
         String URL = All_Constants_Urls.userblock;
@@ -1969,6 +2008,11 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
@@ -2011,7 +2055,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     }
 
-
     public void showDialog(String msg){
 
         android.app.AlertDialog.Builder alertDialogBuilder = new android.app.AlertDialog.Builder(this);
@@ -2036,7 +2079,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
 
     }
-
 
 
     protected GoogleApiClient mGoogleApiClient;

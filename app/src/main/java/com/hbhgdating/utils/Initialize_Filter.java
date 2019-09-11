@@ -2,13 +2,13 @@ package com.hbhgdating.utils;
 
 import android.graphics.Bitmap;
 
-import com.hbhgdating.ImageFilter.filters.AlphaBlending;
-import com.hbhgdating.ImageFilter.filters.BrownishFilter;
-import com.hbhgdating.ImageFilter.filters.CreateSepia;
-import com.hbhgdating.ImageFilter.filters.DoBrightness;
-import com.hbhgdating.ImageFilter.filters.GaussianBlur;
-import com.hbhgdating.ImageFilter.filters.HardLightMode;
-import com.hbhgdating.ImageFilter.filters.Vignette;
+import com.hbhgdating.imageFilter.filters.AlphaBlending;
+import com.hbhgdating.imageFilter.filters.BrownishFilter;
+import com.hbhgdating.imageFilter.filters.CreateSepia;
+import com.hbhgdating.imageFilter.filters.DoBrightness;
+import com.hbhgdating.imageFilter.filters.GaussianBlur;
+import com.hbhgdating.imageFilter.filters.HardLightMode;
+import com.hbhgdating.imageFilter.filters.Vignette;
 
 import net.alhazmy13.imagefilter.ImageFilter;
 

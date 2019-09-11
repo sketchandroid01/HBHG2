@@ -42,8 +42,11 @@
         android:theme="@style/AppTheme"
         android:largeHeap="true"
         android:hardwareAccelerated="false"
+        android:usesCleartextTraffic="true"
         android:name=".utils.Global_Class"
         >
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -136,7 +139,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Chat.StickersView"
+        <activity android:name=".chat.StickersView"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -156,7 +159,7 @@
         </activity>
 
 
-        <activity android:name=".Chat.Get_Matches_msg"
+        <activity android:name=".chat.Get_Matches_msg"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -165,7 +168,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Chat.Chat_screen_new"
+        <activity android:name=".chat.Chat_screen_new"
             android:screenOrientation="portrait"
 
             >
@@ -222,7 +225,7 @@
         </activity>
 
         <activity
-            android:name=".Trimmer.TrimmerActivity"
+            android:name=".trimmer.TrimmerActivity"
             android:screenOrientation="portrait" >
         </activity>
 
@@ -262,19 +265,19 @@
 
 
         <activity
-            android:name=".Fb_Insta_Media.ImageFilesOnly"
+            android:name=".fb_Insta_Media.ImageFilesOnly"
             android:screenOrientation="portrait" >
         </activity>
 
-        <activity android:name=".Fb_Insta_Media.AllMediaFiles"
+        <activity android:name=".fb_Insta_Media.AllMediaFiles"
             android:screenOrientation="portrait" >
         </activity>
 
-        <activity android:name=".Fb_Insta_Media.AllMediaFiles_2"
+        <activity android:name=".fb_Insta_Media.AllMediaFiles_2"
             android:screenOrientation="portrait" >
         </activity>
 
-        <activity android:name=".Chat.ChatImageFullScreen"
+        <activity android:name=".chat.ChatImageFullScreen"
             android:screenOrientation="portrait" >
         </activity>
 
@@ -288,19 +291,19 @@
         </activity>
 
 
-        <activity android:name=".Chat.CreateChatRoomActivity"
+        <activity android:name=".chat.CreateChatRoomActivity"
             android:screenOrientation="portrait" >
         </activity>
 
-        <activity android:name=".Chat.Get_Chatroom_msg"
+        <activity android:name=".chat.Get_Chatroom_msg"
             android:screenOrientation="portrait" >
         </activity>
 
-        <activity android:name=".Chat.ChatroomMembersActivity"
+        <activity android:name=".chat.ChatroomMembersActivity"
             android:screenOrientation="portrait" >
         </activity>
 
-        <activity android:name=".Chat.ChatroomVideoImg"
+        <activity android:name=".chat.ChatroomVideoImg"
             android:screenOrientation="portrait" >
         </activity>
 
@@ -332,17 +335,17 @@
 
 
         <service
-            android:name=".Services.MyService"
+            android:name=".services.MyService"
             android:enabled="true"
             android:exported="true"
             />
 
-        <service android:name=".Services.MyFcmListenerService">
+        <service android:name=".services.MyFcmListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".Services.MyInstanceIDListenerService">
+        <service android:name=".services.MyInstanceIDListenerService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

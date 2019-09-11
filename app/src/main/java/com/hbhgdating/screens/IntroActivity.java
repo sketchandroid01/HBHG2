@@ -11,6 +11,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -54,12 +55,13 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.location.LocationServices;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
-import com.hbhgdating.DatabaseLocal.ImageData;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
+import com.hbhgdating.databaseLocal.ImageData;
 import com.hbhgdating.R;
-import com.hbhgdating.Services.MyService;
+import com.hbhgdating.services.MyService;
 import com.hbhgdating.insta.Constant_C;
 import com.hbhgdating.insta.InstagramApp;
+import com.hbhgdating.utils.Common;
 import com.hbhgdating.utils.ConnectivityReceiver;
 import com.hbhgdating.utils.Global_Class;
 import com.hbhgdating.utils.SharedPref;
@@ -122,7 +124,7 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
     private DatabaseHelper dbhelper;
     RelativeLayout rel1, rel2, ll_progressbar;
     LoginButton loginButton;
-    TextView login_insta,txt_hey,txt_did,txt_to_make,txt_sevensecond;
+    TextView login_insta,txt_hey,txt_did,txt_to_make,txt_sevensecond, tv_privacy_policy;
     RelativeLayout rel_fb,rel_insta,relativeLayout;
     SharedPref sharedPref;
 
@@ -332,13 +334,6 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             mLastLocation = LocationServices.FusedLocationApi
                     .getLastLocation(mGoogleApiClient);
 
@@ -359,43 +354,17 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
         Log.e("mLastLocation", "Connection suspended");
         mGoogleApiClient.connect();
     }
-    // ATTENTION: This was auto-generated to implement the App Indexing API.
-    // See https://g.co/AppIndexing/AndroidStudio for more information.
 
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-   /* public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Intro Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }*/
 
     @Override
     public void onStart() {
         super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
         mGoogleApiClient.connect();
-        //AppIndex.AppIndexApi.start(client, getIndexApiAction());
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-       // AppIndex.AppIndexApi.end(client, getIndexApiAction());
         mGoogleApiClient.disconnect();
     }
 
@@ -429,15 +398,10 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
         public ViewPagerAdapter(Context context) {
             this.context = context;
 
-            /*progressDialog = new ProgressDialog(context);
-            progressDialog.setProgress(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setMessage("Please wait...\nWhile we create your video.");
-            progressDialog.setCanceledOnTouchOutside(false);*/
-
             progressDialog = new Dialog(context, android.R.style.Theme_Translucent);
             progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             progressDialog.getWindow().setContentView(R.layout.progressbar_creating_video);
-            progressDialog.setCancelable(false);
+            progressDialog.setCanceledOnTouchOutside(false);
 
 
         }
@@ -472,22 +436,23 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
 
             viewHolder = new ViewHolder();
 
-            rel1 = (RelativeLayout) itemView.findViewById(R.id.rel1);
-            rel2 = (RelativeLayout) itemView.findViewById(R.id.rel2);
-            login_insta = (TextView) itemView. findViewById(R.id.login_insta) ;
-            rel_fb = (RelativeLayout) itemView. findViewById(R.id.rel_fb) ;
-            rel_insta = (RelativeLayout) itemView. findViewById(R.id.rel_insta) ;
-            relativeLayout = (RelativeLayout) itemView. findViewById(R.id.relativeLayout) ;
+            rel1 = itemView.findViewById(R.id.rel1);
+            rel2 = itemView.findViewById(R.id.rel2);
+            login_insta = itemView. findViewById(R.id.login_insta) ;
+            rel_fb = itemView. findViewById(R.id.rel_fb) ;
+            rel_insta = itemView. findViewById(R.id.rel_insta) ;
+            relativeLayout = itemView. findViewById(R.id.relativeLayout) ;
+            tv_privacy_policy = itemView. findViewById(R.id.tv_privacy_policy) ;
 
 
-            txt_hey = (TextView) itemView. findViewById(R.id.txt_hey) ;
-            txt_did = (TextView) itemView. findViewById(R.id.txt_did) ;
-            txt_to_make = (TextView) itemView. findViewById(R.id.txt_to_make) ;
-            txt_sevensecond = (TextView) itemView. findViewById(R.id.txt_sevensecond) ;
+            txt_hey = itemView. findViewById(R.id.txt_hey) ;
+            txt_did = itemView. findViewById(R.id.txt_did) ;
+            txt_to_make = itemView. findViewById(R.id.txt_to_make) ;
+            txt_sevensecond = itemView. findViewById(R.id.txt_sevensecond) ;
 
-            loginButton = (LoginButton) itemView.findViewById(R.id.login_button);
+            loginButton = itemView.findViewById(R.id.login_button);
 
-            ll_progressbar = (RelativeLayout) itemView.findViewById(R.id.ll_progressbar);
+            ll_progressbar = itemView.findViewById(R.id.ll_progressbar);
             ll_progressbar.setVisibility(View.GONE);
 
 
@@ -523,6 +488,17 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
             });
 
 
+            tv_privacy_policy.setPaintFlags(tv_privacy_policy.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            tv_privacy_policy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String url = Common.privacy_url;
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    startActivity(i);
+                }
+            });
 
             /////////////   Insta login ...........
 
@@ -643,7 +619,8 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
 
                         }
 
-                        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
+                                new GraphRequest.GraphJSONObjectCallback() {
 
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
@@ -662,10 +639,7 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
 
 
                                         String location_name = "";
-
                                         global_class.get_location="gps";
-
-
 
                                         /*Log.d(TAG,"locality_gps >>>."+gpsTracker.getLocality(IntroActivity.this));
                                         Log.d(TAG,"country_gps >>>."+gpsTracker.getCountryName(IntroActivity.this));*/
@@ -702,7 +676,7 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
                                         SimpleDateFormat from_df = new SimpleDateFormat("M/dd/yyyy");
                                         Date birthdate = from_df.parse(birthday);
                                         int age = calculateAge(birthdate);
-                                        Log.d("TAG", "age >> " + age);
+                                        //Log.d("TAG", "age >> " + age);
                                         global_class.FB_profile_age = age;
 
 
@@ -730,26 +704,27 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
                                         String via = "fb";
 
                                         // save info ......
-                                        sharedPref.set_FB_LoginInfo(via, true, str_id, name, email, String.valueOf(age),
+                                        sharedPref.set_FB_LoginInfo(via, true, str_id, name, email,
+                                                String.valueOf(age),
                                                 gender, str_date, global_class.getLocation_gps());
 
                                         sharedPref.set_LOGIN_FB(true);
 
-
                                         JSONObject obj_albums = object.getJSONObject("albums");
 
                                         JSONArray arr_data = obj_albums.getJSONArray("data");
-                                      //  Log.d(TAG, "arr_data = "+arr_data.length());
+                                        //Log.d(TAG, "arr_data = "+arr_data);
 
                                         global_class.FB_profile_dir = "";
-                                        for (int i = 0; i <arr_data.length(); i++){
+                                        for (int i = 0; i < arr_data.length(); i++){
                                             JSONObject obj = arr_data.getJSONObject(i);
 
-                                            if (obj.optString("name").equals("Profile Pictures")){
+                                            if (obj.optString("name")
+                                                    .equalsIgnoreCase("Profile pictures")){
 
                                                 global_class.FB_profile_dir = obj.optString("id");
 
-                                              //  Log.d(TAG, "FB_profile_dir = "+global_class.FB_profile_dir);
+                                                Log.d(TAG, "FB_profile_dir = "+global_class.FB_profile_dir);
 
                                             }
 
@@ -917,8 +892,8 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
                     public void onCompleted(
                             JSONObject object,
                             GraphResponse response) {
-                        Log.d("TAG", "response get_all_pic: "+response);
-                        Log.d("TAG", "Json get_all_pic: "+object);
+                      //  Log.d("TAG", "response get_all_pic: "+response);
+                      //  Log.d("TAG", "Json get_all_pic: "+object);
 
                     }
                 });
@@ -939,71 +914,42 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
     //    Log.d("TAG", "user_id getprofile: "+user_id);
     //    Log.d("TAG", "token getprofile: "+token);
 
-        url = "https://graph.facebook.com/"+user_id+"/?fields=albums.fields(photos.fields(source))&limit=25&access_token="+token ;
+        url = "https://graph.facebook.com/v3.3/"+user_id
+                +"/?fields=albums.fields(photos.fields(source))&limit=50" +
+                "&access_token="+token ;
 
-
-
-     //   Log.d("TAG", "get_all_pic: "+url);
-
-
-       /* new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
-                "/{page-id}/video_lists",
-                null,
-                HttpMethod.GET,
-                new GraphRequest.Callback() {
-                    public void onCompleted(GraphResponse response) {
-                        Log.d("TAG", "videos: "+response);
-                    }
-                }
-        ).executeAsync();*/
-
-
+       // Log.d("TAG", "get_all_pic: "+url);
 
 
         ////// Get Image from FB url
 
         new HttpAsyncTask_1().execute(url);
 
-
-
     }
 
 
     private class HttpAsyncTask_1 extends AsyncTask<String, Void, String> {
 
-
         @Override
         protected void onPreExecute() {
-
-
             progressDialog.show();
-
             super.onPreExecute();
         }
-
         @Override
         protected String doInBackground(String... urls) {
-            //   progressDialog.show();
             return GET(urls[0]);
         }
-        // onPostExecute displays the results of the AsyncTask.
+
         @Override
         protected void onPostExecute(String result) {
-            //   Toast.makeText(getBaseContext(), "Received!", Toast.LENGTH_LONG).show();
-
-          //  Log.d("TAG", "result: "+result.toString());
-
 
             try {
 
                 ImageData imageData = new ImageData();
 
-
-
                 JSONObject obj_full = new JSONObject(result);
 
-            //    Log.d("TAG", "obj_full: "+obj_full.toString());
+              //  Log.d("TAG", "obj_full: "+obj_full.toString());
 
 
 
@@ -1020,7 +966,7 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
                         JSONObject profile_pic_dir_obj = data.getJSONObject(a);
                         JSONObject obj_photos = profile_pic_dir_obj.getJSONObject("photos");
 
-                       // Log.d("TAG", "obj_photos: " + obj_photos);
+                      //  Log.d("TAG", "obj_photos: " + obj_photos);
 
                         JSONArray data_photo = obj_photos.getJSONArray("data");
 
@@ -1029,7 +975,7 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
                             JSONObject object_2 = data_photo.getJSONObject(j);
 
                             String image_url = object_2.optString("source");
-                            //Log.d("TAG", "picurl: " + image_url);
+                         //   Log.d("TAG", "picurl: " + image_url);
                             if (j == 0){
                                 global_class.Profile_Image = image_url;
                             }
@@ -1047,10 +993,19 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
 
 
 
+                        Intent myIntent = new Intent(IntroActivity.this, Check_Video.class);
+                        myIntent.putExtra("image_url", global_class.Image_Url_FB.get(0));
+                        myIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(myIntent);
+                        finish();
+
+                        progressDialog.dismiss();
+
+
                         JSONObject obj_paging = obj_photos.optJSONObject("paging");
                         String next = obj_paging.optString("next");
 
-                        Log.d("TAG", "next = " + next);
+                        /*Log.d("TAG", "next = " + next);
                         if(global_class.FB_profile_age >= 18) {
                             if (next == null || next.equals(null) || next.equals("")){
 
@@ -1061,18 +1016,17 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
                                 finish();
 
 
-
                                 progressDialog.dismiss();
 
                             }else {
 
                                 // fetch next Selected_Gallery_Images ........
-                                new HttpAsyncTask_2().execute(next);
+                               // new HttpAsyncTask_2().execute(next);
                             }
                         }else {
                           //  mProgress.dismiss();
                             Toast.makeText(IntroActivity.this,"You are underage to use this app.",Toast.LENGTH_LONG).show();
-                        }
+                        }*/
 
                     }
 
@@ -1245,7 +1199,8 @@ public class IntroActivity extends FragmentActivity implements ConnectionCallbac
     ////////////////////////////////////////////////////////////////////////
 
     // convert inputstream to String
-    private static String convertInputStreamToString(InputStream inputStream) throws IOException{
+    private static String convertInputStreamToString(InputStream inputStream)
+            throws IOException{
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
         String line = "";
         String result = "";

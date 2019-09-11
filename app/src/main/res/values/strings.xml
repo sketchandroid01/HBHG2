@@ -50,8 +50,8 @@
     <string name="next">Next</string>
     <string name="back">Back</string>
 
-    <string name="com_facebook_loginview_log_in_button">Connect with Facebook</string>
-    <string name="com_facebook_loginview_log_in_button_long">Connect with Facebook</string>
+    <string name="com_facebook_loginview_log_in_button">Continue with Facebook</string>
+    <string name="com_facebook_loginview_log_in_button_long">Continue with Facebook</string>
     <string name="alldata">Please fill All Data</string>
     <string name="enteralldetail">Please enter all details to proceed.</string>
     <string name="selectvideochatroom">Please select video for chat room.</string>

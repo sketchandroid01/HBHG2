@@ -31,14 +31,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hbhgdating.Chat.ChatMessage;
-import com.hbhgdating.Chat.ChatRoomDetailListViewAdapter;
-import com.hbhgdating.Chat.Chat_screen_new;
-import com.hbhgdating.Chat.ChatroomMembersActivity;
-import com.hbhgdating.Chat.ChatroomVideoImg;
-import com.hbhgdating.Chat.GiphyAdapter_Chatroom;
-import com.hbhgdating.Chat.StickersView;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
+import com.hbhgdating.chat.ChatMessage;
+import com.hbhgdating.chat.ChatRoomDetailListViewAdapter;
+import com.hbhgdating.chat.Chat_screen_new;
+import com.hbhgdating.chat.ChatroomMembersActivity;
+import com.hbhgdating.chat.ChatroomVideoImg;
+import com.hbhgdating.chat.GiphyAdapter_Chatroom;
+import com.hbhgdating.chat.StickersView;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
 import com.hbhgdating.R;
 import com.hbhgdating.utils.All_Constants_Urls;
 import com.hbhgdating.utils.Common;
@@ -47,12 +47,6 @@ import com.hbhgdating.utils.SharedPref;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -71,6 +65,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 
 /**
  * Created by Developer on 5/5/17.
@@ -129,7 +124,7 @@ public class Get_Chatroom_msg_Noti extends AppCompatActivity {
         progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
         sharedPref = new SharedPref(this);
         global_class = (Global_Class)getApplicationContext();
@@ -599,6 +594,10 @@ public class Get_Chatroom_msg_Noti extends AppCompatActivity {
      //   Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -702,6 +701,9 @@ public class Get_Chatroom_msg_Noti extends AppCompatActivity {
        // Log.d(TAG ,"AsyncHttpClient URL- " + URL);
        // Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -770,6 +772,11 @@ public class Get_Chatroom_msg_Noti extends AppCompatActivity {
 
           //  Log.d(All_Constants_Urls.TAG, "getUserList: "+url);
           //  Log.d(All_Constants_Urls.TAG, "getUserList: "+params);
+
+
+            client.setSSLSocketFactory(
+                    new SSLSocketFactory(Common.getSslContext(),
+                            SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
             try {
                 client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);

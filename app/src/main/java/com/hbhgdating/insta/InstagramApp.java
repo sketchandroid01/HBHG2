@@ -15,8 +15,8 @@ import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
-import com.hbhgdating.DatabaseLocal.ImageData;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
+import com.hbhgdating.databaseLocal.ImageData;
 import com.hbhgdating.R;
 import com.hbhgdating.screens.Check_Video;
 import com.hbhgdating.utils.Global_Class;
@@ -153,9 +153,11 @@ public class InstagramApp {
 		mAuthUrl = AUTH_URL
 				+ "?client_id=" + clientId
 				+ "&redirect_uri=" + mCallbackUrl
-				+ "&response_type=code&display=touch&scope=likes+comments+relationships";
+				//+ "&response_type=code&display=touch&scope=likes+comments+relationships";
+				+ "&response_type=code&display=touch&scope=basic";
 
-		InstagramDialog.OAuthDialogListener listener = new InstagramDialog.OAuthDialogListener() {
+		InstagramDialog.OAuthDialogListener listener =
+				new InstagramDialog.OAuthDialogListener() {
 			@Override
 			public void onComplete(String code) {
 
@@ -178,11 +180,7 @@ public class InstagramApp {
 
 		mDialog = new InstagramDialog(context, mAuthUrl, listener);
 
-
-
 		global_class = (Global_Class)mCtx.getApplicationContext();
-
-
 
 
 	}
@@ -222,16 +220,7 @@ public class InstagramApp {
 					String profile_picture = jsonObj.getJSONObject("user").getString("profile_picture");
 
 					mInstaUserId = id;
-
-
-					/*Log.d(TAG, "id " + id.toString());
-					Log.d(TAG, "user " + user.toString());
-					Log.d(TAG, "name " + name.toString());
-					Log.d(TAG, "profile_picture " + profile_picture.toString());*/
-
-
 					global_class.Insta_name = name;
-
 
 					String full_name = global_class.Insta_name;
 					String lastName = "";
@@ -242,14 +231,9 @@ public class InstagramApp {
 						firstName = full_name.substring(0, full_name.lastIndexOf(' '));
 						global_class.Insta_first_name = firstName;
 
-					//	Log.d(TAG,"lastName>>>>   "+lastName);
-					//	Log.d(TAG,"firstName>>>>  "+firstName);
 					}
 					else{
-
 						firstName = full_name;
-					//	Log.d(TAG,"firstName else>>>>   "+firstName);
-
 					}
 
 					String lo_via = "insta";
@@ -257,8 +241,6 @@ public class InstagramApp {
 					sharedPref.set_INSTA_LoginInfo(lo_via, true, id, name, user, global_class.getLocation_gps());
 
 					sharedPref.set_LOGIN_INSTA(true);
-
-
 
 					getAllMediaImages_Video();
 

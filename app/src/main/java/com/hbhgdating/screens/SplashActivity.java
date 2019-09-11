@@ -24,15 +24,10 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.hbhgdating.BuildConfig;
 import com.hbhgdating.R;
-import com.hbhgdating.Services.MyService;
-import com.hbhgdating.utils.All_Constants_Urls;
 import com.hbhgdating.utils.Global_Class;
 import com.hbhgdating.utils.SharedPref;
-import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.splunk.mint.Mint;
 

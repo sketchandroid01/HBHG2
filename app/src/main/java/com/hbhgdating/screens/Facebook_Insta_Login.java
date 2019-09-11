@@ -27,8 +27,8 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
-import com.hbhgdating.DatabaseLocal.ImageData;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
+import com.hbhgdating.databaseLocal.ImageData;
 import com.hbhgdating.R;
 import com.hbhgdating.insta.Constant_C;
 import com.hbhgdating.insta.InstagramApp_2;
@@ -99,7 +99,7 @@ public class Facebook_Insta_Login extends AppCompatActivity {
         progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_add_filter_video);
-        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
 
         Bundle bundle = getIntent().getExtras();
@@ -204,7 +204,8 @@ public class Facebook_Insta_Login extends AppCompatActivity {
                                 for (int i = 0; i <arr_data.length(); i++){
                                     JSONObject obj = arr_data.getJSONObject(i);
 
-                                    if (obj.optString("name").equals("Profile Pictures")){
+                                    if (obj.optString("name")
+                                            .equalsIgnoreCase("Profile pictures")){
 
                                         global_class.FB_profile_dir = obj.optString("id");
 
@@ -370,7 +371,8 @@ public class Facebook_Insta_Login extends AppCompatActivity {
       //  Log.d("TAG", "token getprofile: "+FB_token);
 
         String url = "https://graph.facebook.com/"+FB_user_id+
-                "/?fields=albums.fields(photos.fields(source))&limit=7&access_token="+FB_token;
+                "/?fields=albums.fields(photos.fields(source))" +
+                "&limit=7&access_token="+FB_token;
 
      //   Log.d("TAG", "get_all_pic: "+url);
 

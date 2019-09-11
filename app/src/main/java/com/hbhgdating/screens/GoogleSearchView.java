@@ -83,7 +83,7 @@ public class GoogleSearchView extends Activity {
 		progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
 		progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-		progressDialog.setCancelable(false);
+		progressDialog.setCanceledOnTouchOutside(false);
 
 
 		gridView.setEmptyView(txtEmpty);

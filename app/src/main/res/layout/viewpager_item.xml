@@ -9,8 +9,8 @@
         android:id="@+id/rel1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:background="@mipmap/bg2"
+        android:visibility="gone"
          >
         <RelativeLayout
             android:id="@+id/rel_hey"
@@ -95,12 +95,12 @@
             android:id="@+id/relativeLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/_30sdp"
             android:layout_marginRight="@dimen/_30sdp"
-            android:paddingBottom="@dimen/_20sdp"
             android:animateLayoutChanges="true"
-          >
+            android:layout_above="@+id/tv_privacy_policy"
+            >
+
             <TextView
                 android:id="@+id/txt_tick"
                 android:layout_width="match_parent"
@@ -116,117 +116,104 @@
                 android:layout_marginBottom="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
-        <RelativeLayout
-            android:id="@+id/rel_fb"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_below="@+id/txt_tick"
-            android:background="@drawable/round_fill"
-            android:gravity="center"
-            android:animateLayoutChanges="true"
-            >
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/login_button"
+            <RelativeLayout
+                android:id="@+id/rel_fb"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                facebook:logout_text="@string/com_facebook_loginview_log_in_button"
-                facebook:login_text="@string/com_facebook_loginview_log_in_button" />
-
-            <ImageView
-                android:id="@+id/img_view_1"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/fb_whi_96"
-                android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name" />
+                android:layout_marginTop="@dimen/_30sdp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_below="@+id/txt_tick"
+                android:background="@drawable/round_fill"
+                android:gravity="center"
+                android:animateLayoutChanges="true"
+                >
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    facebook:logout_text="@string/com_facebook_loginview_log_in_button"
+                    facebook:login_text="@string/com_facebook_loginview_log_in_button" />
+
+                <ImageView
+                    android:id="@+id/img_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/fb_whi_96"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name" />
 
 
-            <TextView
-                android:layout_toRightOf="@+id/img_view_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/com_facebook_loginview_log_in_button"
-                android:textColor="@color/white"
-               android:layout_centerVertical="true"
-                android:textSize="@dimen/_16sdp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="10dp"
+                <TextView
+                    android:layout_toRightOf="@+id/img_view_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/com_facebook_loginview_log_in_button"
+                    android:textColor="@color/white"
+                   android:layout_centerVertical="true"
+                    android:textSize="@dimen/_16sdp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
 
-                />
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/rel_insta"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rel_fb"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/round_fill_pink"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:animateLayoutChanges="true"
-
-          >
-            <ImageView
-                android:id="@+id/img_view_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/insta_whi_96"
-               android:layout_centerVertical="true"
-                android:contentDescription="@string/app_name" />
-
-            <TextView
-                android:layout_toRightOf="@+id/img_view_2"
-                android:id="@+id/login_insta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:textColor="@color/white"
-                android:text="Connect with Instagram"
-                android:textSize="@dimen/_16sdp"
-
-               android:layout_centerVertical="true"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
-                android:paddingLeft="6dp"
-                />
+                    />
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rel_insta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rel_fb"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/round_fill_pink"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:animateLayoutChanges="true"
+
+              >
+                <ImageView
+                    android:id="@+id/img_view_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/insta_whi_96"
+                   android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name" />
+
+                <TextView
+                    android:layout_toRightOf="@+id/img_view_2"
+                    android:id="@+id/login_insta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:textColor="@color/white"
+                    android:text="Continue with Instagram"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_centerVertical="true"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="6dp"
+                    />
+                </RelativeLayout>
+
+
         </RelativeLayout>
-       <!-- <LinearLayout
-            android:id="@+id/llAfterLoginView"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tv_privacy_policy"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone" >
-
-            <Button
-                android:id="@+id/btnViewInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dip"
-                android:layout_marginRight="40dip"
-                android:text="View Info" />
-
-            <Button
-                android:id="@+id/btnGetAllImages"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dip"
-                android:layout_marginRight="40dip"
-                android:text="All Images" />
-
-
-        </LinearLayout>
--->
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/_15sdp"
+            android:textColor="@color/blue"
+            android:text="Privacy Policy"
+            />
 
     </RelativeLayout>
 

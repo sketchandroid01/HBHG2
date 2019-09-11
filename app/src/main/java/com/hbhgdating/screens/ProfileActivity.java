@@ -43,11 +43,11 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
 import com.hbhgdating.BuildConfig;
-import com.hbhgdating.Chat.Chat_screen_new;
-import com.hbhgdating.DatabaseLocal.DatabaseHelper;
-import com.hbhgdating.Fb_Insta_Media.AllMediaFiles_2;
+import com.hbhgdating.chat.Chat_screen_new;
+import com.hbhgdating.databaseLocal.DatabaseHelper;
+import com.hbhgdating.fb_Insta_Media.AllMediaFiles_2;
 import com.hbhgdating.R;
-import com.hbhgdating.Trimmer.TrimmerActivity;
+import com.hbhgdating.trimmer.TrimmerActivity;
 import com.hbhgdating.adapter.Profile_Vp_Adapter_;
 import com.hbhgdating.slider.Animations.DescriptionAnimation;
 import com.hbhgdating.slider.Indicators.PagerIndicator;
@@ -82,6 +82,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.conn.ssl.SSLSocketFactory;
 import in.myinnos.awesomeimagepicker.activities.AlbumSelectActivity;
 import in.myinnos.awesomeimagepicker.helpers.ConstantsCustomGallery;
 import in.myinnos.awesomeimagepicker.models.Image;
@@ -233,7 +234,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         progressDialog = new Dialog(this, android.R.style.Theme_Translucent);
         progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         progressDialog.getWindow().setContentView(R.layout.progressbar_pleasewait);
-        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
 
 
         sharedPref = new SharedPref(this);
@@ -254,14 +255,12 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
         image2Play = (ImageView) this.findViewById(R.id.image2Play);
 
-
         image3Play = (ImageView) this.findViewById(R.id.image3Play);
         imgSexualOriante = (ImageView) this.findViewById(R.id.imgSexualOriante);
 
         txtTitle = (TextView) this.findViewById(R.id.txtTitle);
 
         imgEditUser = (TextView) this.findViewById(R.id.imgEditUser);
-
 
         linearfull = (RelativeLayout) this.findViewById(R.id.linearfull);
         linearfull.setVisibility(View.INVISIBLE);
@@ -285,11 +284,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         mediaController.setAnchorView(videoView3);
 
 
-
-
-
-        //   imgset = (ImageView) this.findViewById(R.id.imgset);
-
         imgfull = (ImageView) this.findViewById(R.id.imgfull);
 
 
@@ -305,13 +299,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         mDemoSliderfull3 = (SliderLayout) findViewById(R.id.sliderfull3);
 
         eats_img.setImageResource(R.mipmap.button_eat);
-        // rl4_eats.setVisibility(View.VISIBLE);
-
-
-
-        // imgSexualOriante.setImageResource(R.mipmap.straight_male);
-
-
 
 
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -319,7 +306,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         iv1 = (ImageView)findViewById(R.id.iv1) ;
         iv2 = (ImageView)findViewById(R.id.iv2) ;
         iv3 = (ImageView)findViewById(R.id.iv3) ;
-
 
 
         List_File_1 = new ArrayList<>();
@@ -333,14 +319,10 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
             JSONObject jsonObject = new JSONObject(sharedPref.get_Login_Info());
 
-
-
         }catch (Exception e) {
             e.printStackTrace();
             Log.e("TAG", "Exception = "+e.toString());
         }
-
-
 
 
         eats_img.setOnClickListener(new OnClickListener() {
@@ -350,7 +332,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 eats_img.setImageResource(R.mipmap.button_eat);
                 loves_img.setImageResource(R.mipmap.button_love2);
                 listens_img.setImageResource(R.mipmap.button_listen2);
-
 
                 mPager.setCurrentItem(0);
 
@@ -375,12 +356,9 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 loves_img.setImageResource(R.mipmap.button_love2);
                 eats_img.setImageResource(R.mipmap.button_eat2);
 
-
                 mPager.setCurrentItem(2);
             }
         });
-
-
 
 
         ViewPager_OnPageChange();
@@ -389,9 +367,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
         setDeault_Video_Action();
 
-
-
-        Log.d(All_Constants_Urls.TAG, "Info - "+sharedPref.get_Profile_Videos());
+        //Log.d(All_Constants_Urls.TAG, "Info - "+sharedPref.get_Profile_Videos());
 
         //getProfileData();
 
@@ -1143,20 +1119,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
 
 
-      /*  if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            finish();
-        }else {
-            if (fullplay || imgplay) {
-
-
-            }
-
-
-        }
-*/
-
-
     }
 
 
@@ -1198,9 +1160,9 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
             }
 
-            Log.d(All_Constants_Urls.TAG, "page_position = " + page_position);
+          //  Log.d(All_Constants_Urls.TAG, "page_position = " + page_position);
 
-            Log.d(All_Constants_Urls.TAG, "List_Image_Uri = " + List_Image_Uri);
+          //  Log.d(All_Constants_Urls.TAG, "List_Image_Uri = " + List_Image_Uri);
 
 
             switch (page_position) {
@@ -1220,27 +1182,25 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
 
         }
-        else if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST) {
+        else if (resultCode == RESULT_OK &&
+                requestCode == CAMERA_REQUEST) {
 
             Uri uri = data.getData();
 
             String selectedImage = uri.toString();
 
-            Log.d(All_Constants_Urls.TAG, "photoUri: "+selectedImage);
+           // Log.d(All_Constants_Urls.TAG, "photoUri: "+selectedImage);
 
             HashMap<String, String> map;
             map = List_Image_Uri.get(page_position);
 
-            Log.d(All_Constants_Urls.TAG, "map before = " + map);
+           // Log.d(All_Constants_Urls.TAG, "map before = " + map);
 
             if (position_image_key.equals("p1" + page_position)) {
 
-
                 List_Image_Uri.get(page_position).put(position_image_key, selectedImage);
 
-
             } else if (position_image_key.equals("p2" + page_position)) {
-
 
                 List_Image_Uri.get(page_position).put(position_image_key, selectedImage);
 
@@ -1249,7 +1209,8 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 List_Image_Uri.get(page_position).put(position_image_key, selectedImage);
 
             }
-            Log.d(All_Constants_Urls.TAG, "map after = " + map);
+
+           // Log.d(All_Constants_Urls.TAG, "map after = " + map);
 
 
             switch (page_position) {
@@ -1275,11 +1236,12 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
 
 
-        } else if(resultCode == RESULT_OK && requestCode == GOOGLE_PHOTO_SELECTION){
+        } else if(resultCode == RESULT_OK &&
+                requestCode == GOOGLE_PHOTO_SELECTION){
 
             // getFileUri();
 
-            Log.d(All_Constants_Urls.TAG, "data from GOOGLE_PHOTO_SELECTION : "+data.getExtras().getString("sourceurl"));
+          //  Log.d(All_Constants_Urls.TAG, "data from GOOGLE_PHOTO_SELECTION : "+data.getExtras().getString("sourceurl"));
 
             String selectedImage = data.getExtras().getString("sourceurl");
             title_swoing_text = data.getExtras().getString("text_string");
@@ -1287,7 +1249,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
             HashMap<String, String> map;
             map = List_Image_Uri.get(page_position);
 
-            Log.d(All_Constants_Urls.TAG, "map before = " + map);
+           // Log.d(All_Constants_Urls.TAG, "map before = " + map);
 
             if (position_image_key.equals("p1" + page_position)) {
 
@@ -1303,7 +1265,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
             }
 
-            Log.d(All_Constants_Urls.TAG, "map after = " + map);
+           // Log.d(All_Constants_Urls.TAG, "map after = " + map);
 
             switch (page_position) {
                 case 0:
@@ -1327,11 +1289,10 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
             }
 
 
-        } else
-            if (resultCode == RESULT_OK && requestCode == RESULT_FB_INSTA_Image){
+        } else if (resultCode == RESULT_OK &&
+                requestCode == RESULT_FB_INSTA_Image){
 
-
-                Log.d(All_Constants_Urls.TAG, "data from RESULT_FB_INSTA_Image : "+data.getExtras().getString("sourceurl"));
+              //  Log.d(All_Constants_Urls.TAG, "data from RESULT_FB_INSTA_Image : "+data.getExtras().getString("sourceurl"));
 
                 String selectedImage = data.getExtras().getString("sourceurl");
                 title_swoing_text = data.getExtras().getString("text_string");
@@ -1339,7 +1300,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 HashMap<String, String> map;
                 map = List_Image_Uri.get(page_position);
 
-                Log.d(All_Constants_Urls.TAG, "map before = " + map);
+              //  Log.d(All_Constants_Urls.TAG, "map before = " + map);
 
                 if (position_image_key.equals("p1" + page_position)) {
 
@@ -1355,7 +1316,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
                 }
 
-                Log.d(All_Constants_Urls.TAG, "map after = " + map);
+              //  Log.d(All_Constants_Urls.TAG, "map after = " + map);
 
                 switch (page_position) {
                     case 0:
@@ -1381,7 +1342,9 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
             }
 
-        else if (requestCode == ConstantsCustomGallery.REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+        else if (requestCode == ConstantsCustomGallery.REQUEST_CODE &&
+                resultCode == Activity.RESULT_OK && data != null) {
+
             //The array list has the image paths of the selected Selected_Gallery_Images
 
             if(seleced_viedo_layout == 1) {
@@ -1425,7 +1388,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
                 if (data == null){
 
-                    Log.d(All_Constants_Urls.TAG, "Video path = "+Captured_Video_Path);
+                   // Log.d(All_Constants_Urls.TAG, "Video path = "+Captured_Video_Path);
 
                     Uri video_uri = Uri.fromFile(new File(Captured_Video_Path));
 
@@ -1463,7 +1426,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
                 }else {
 
-                    Log.d(All_Constants_Urls.TAG, "Video path = "+data.getData());
+                   // Log.d(All_Constants_Urls.TAG, "Video path = "+data.getData());
 
 
                     if(seleced_viedo_layout == 1){
@@ -1514,7 +1477,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
             // OI FILE Manager
             String filemanagerstring = selectedImageUri.getPath();
 
-            Log.d("TAG", "path = "+filemanagerstring);
+          //  Log.d("TAG", "path = "+filemanagerstring);
             Intent intent = new Intent(ProfileActivity.this, TrimmerActivity.class);
             intent.putExtra("path", FileUtils.getPath(this, selectedImageUri));
             startActivityForResult(intent, TRIMMER_ACTIVITY_RESULT_CODE);
@@ -1532,9 +1495,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
                 is_video_1 = true;
 
-
                 Play_Video(VideoUri1.toString());
-
 
             }else if (seleced_viedo_layout == 2){
 
@@ -1542,9 +1503,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
                 is_video_2 = true;
 
-
                 Play_Video2(VideoUri2.toString());
-
 
             }else if (seleced_viedo_layout == 3){
 
@@ -1556,9 +1515,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
             }
 
-
             addVideoConfirmationDialog();
-
 
         }else
         if (requestCode == ALL_MEDIA_ACTIVITY_RESULT_CODE && resultCode == RESULT_OK){
@@ -1590,67 +1547,40 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
             }
 
         }
-        //profile_vp_adapter.notifyDataSetChanged();
-
 
     }
 
 
     @Override
     protected void onResume() {
-        /*mDemoSliderfull.setVisibility(View.GONE);
-        mDemoSliderfull2.setVisibility(View.GONE);
-        mDemoSliderfull3.setVisibility(View.GONE);
-        linearfull.setVisibility(View.VISIBLE);*/
-
-       // videoView1.start();
-      //  videoView2.start();
-       // videoView3.start();
 
         slider1.startAutoCycle();
         slider2.startAutoCycle();
         slider3.startAutoCycle();
 
-
         //
         Log.e("TAG", "Call onResume");
 
         if (VideoUri1 != null){
-
             Play_Video(VideoUri1.toString());
-
-
         }else if (Video_Url_1 != null){
-
-
             Play_Video(Video_Url_1);
         }
+
         //
         if (VideoUri2 != null){
-
-
             Play_Video2(VideoUri2.toString());
-
         }else if (Video_Url_2 != null){
-
-
             Play_Video2(Video_Url_2);
         }
+
         //
         if (VideoUri3 != null){
-
-
             Play_Video3(VideoUri3.toString());
-
         }else if (Video_Url_3 != null){
-
-
             Play_Video3(Video_Url_3);
         }
 
-
-
-       // set_Video_Data();
 
         super.onResume();
     }
@@ -1676,12 +1606,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         mDemoSliderfull.setVisibility(View.GONE);
         videoView1.setVisibility(View.VISIBLE);
 
-        //String proxyUrl = "";
         if (videoUri.startsWith("http")){
-
-            //proxy = Global_Class.getProxy(this);
-            //proxyUrl = proxy.getProxyUrl(videoUri);
-
             videoView1.setVideoURI(Uri.parse(videoUri));
 
         }else {
@@ -1701,8 +1626,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 mp.setVolume(0, 0);
             }
         });
-
-        //Setting MediaController and URI, then starting the videoView
 
         final String urll = videoUri;
         videoView1.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -1740,13 +1663,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         videoView2.setVisibility(View.VISIBLE);
         mediaController.setVisibility(View.GONE);
 
-        //Setting MediaController and URI, then starting the videoView
-
-        //String proxyUrl = "";
         if (videoUri.startsWith("http")){
-
-            //proxy = Global_Class.getProxy(this);
-            //proxyUrl = proxy.getProxyUrl(videoUri);
             videoView2.setVideoURI(Uri.parse(videoUri));
 
         }else {
@@ -1803,11 +1720,8 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
         mediaController.setVisibility(View.GONE);
 
-        //String proxyUrl = "";
         if (videoUri.startsWith("http")){
 
-            //proxy = Global_Class.getProxy(this);
-            //proxyUrl = proxy.getProxyUrl(videoUri);
             videoView3.setVideoURI(Uri.parse(videoUri));
 
         }else {
@@ -1827,8 +1741,6 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 mp.setVolume(0, 0);
             }
         });
-        //Setting MediaController and URI, then starting the videoView
-
 
         final String urll = videoUri;
         videoView3.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -1935,12 +1847,11 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         position_image_key = image_key;
         page_position = position;
 
-        //title_swoing_text = et_text;
         Text_key = text_key;
 
-        Log.d(All_Constants_Urls.TAG, "position = "+position);
-        Log.d(All_Constants_Urls.TAG, "image position = "+image_key);
-        Log.d(All_Constants_Urls.TAG, "Text_key = "+Text_key);
+      //  Log.d(All_Constants_Urls.TAG, "position = "+position);
+     //   Log.d(All_Constants_Urls.TAG, "image position = "+image_key);
+     //   Log.d(All_Constants_Urls.TAG, "Text_key = "+Text_key);
 
     }
 
@@ -2237,33 +2148,19 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         @Override
         protected Void doInBackground(Void... arg0) {
 
-            //don't touch dialog here it'll break the application
-            //do some lengthy stuff like calling login webservice
-
-
             for (int i = 0; i < images.size(); i++){
-                //Log.d("TAG", "image path = "+images.get(i).path.toString());
 
                 Uri selectedImage = Uri.fromFile(new File(images.get(i).path.toString()));
 
-                //src = BitmapFactory.decodeFile(Selected_Gallery_Images.get(i).path);
-
                 src = utility.decodeUri_640(selectedImage);
 
-                //Log.d("TAG", "image filter = "+selectedImage);
-
-
                 saveBitmap(src, "P_IMG_1_", i);
-
 
                 int differance = images.size() - i;
                 if (differance > 0)
                     asyncDialog.setProgress(100/differance);
 
-
             }
-
-
 
             return null;
         }
@@ -2344,18 +2241,11 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
             //don't touch dialog here it'll break the application
             //do some lengthy stuff like calling login webservice
 
-
             for (int i = 0; i < images.size(); i++){
-                //Log.d("TAG", "image path = "+images.get(i).path.toString());
 
                 Uri selectedImage = Uri.fromFile(new File(images.get(i).path.toString()));
 
-                //src = BitmapFactory.decodeFile(Selected_Gallery_Images.get(i).path);
-
                 src = utility.decodeUri_640(selectedImage);
-
-               // Log.d("TAG", "image filter = "+selectedImage);
-
 
                 saveBitmap(src, "P_IMG_2_", i);
 
@@ -2364,9 +2254,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 if (differance > 0)
                     asyncDialog.setProgress(100/differance);
 
-
             }
-
 
             return null;
         }
@@ -2850,12 +2738,15 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
     public void addProfileVideo(){
 
-
        // progressDialog.show();
 
         String URL = All_Constants_Urls.ADD_PROFILE_VIDEO;
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         params.put(All_Constants_Urls.Token, All_Constants_Urls.TOKEN_FIXED);
         params.put(All_Constants_Urls.user_id, sharedPref.get_Use_Id());
@@ -2874,8 +2765,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 File file1 = new File(getRealPathFromURI(VideoUri1));
                 params.put(All_Constants_Urls.video_1, file1);
 
-            }else
-            if (seleced_viedo_layout == 2){
+            }else if (seleced_viedo_layout == 2){
 
                 for (int i = 0; i < List_File_2.size(); i++){
 
@@ -2887,8 +2777,7 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
                 File file2 = new File(getRealPathFromURI(VideoUri2));
                 params.put(All_Constants_Urls.video_2, file2);
 
-            }else
-            if (seleced_viedo_layout == 3){
+            }else if (seleced_viedo_layout == 3){
 
                 for (int i = 0; i < List_File_3.size(); i++){
 
@@ -3285,6 +3174,11 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT_30);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -3444,6 +3338,11 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT_30);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -3605,6 +3504,10 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
 
 
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
+
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT_30);
         client.post(URL, params, new JsonHttpResponseHandler() {
 
@@ -3691,6 +3594,11 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
         client.post(URL, params, new JsonHttpResponseHandler() {
@@ -4345,6 +4253,12 @@ public class ProfileActivity extends AppCompatActivity implements ConnectionCall
 
         Log.d(TAG ,"AsyncHttpClient URL- " + URL);
         Log.d(TAG ,"AsyncHttpClient PARAM - " + params.toString());
+
+
+
+        client.setSSLSocketFactory(
+                new SSLSocketFactory(Common.getSslContext(),
+                        SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER));
 
 
         client.setMaxRetriesAndTimeout(Common.MAXIMUM_RETRY , Common.DEFAULT_TIMEOUT);
